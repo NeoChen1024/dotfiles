@@ -1,0 +1,516 @@
+# $Id: system.vtwmrc-menu 62 2005-11-06 00:12:18Z branden $
+
+# Based on:
+# $XConsortium: system.twmrc,v 1.8 91/04/23 21:10:58 gildea Exp $
+
+#
+# Variables
+#
+
+NoGrabServer
+NoDefaults
+RestartPreviousState
+ShowIconManager
+SortIconManager
+IconifyByUnmapping
+RightHandSidePulldownMenus
+
+ButtonColorIsFrame
+ShallowReliefWindowButton
+
+FixManagedVirtualGeometries
+FixTransientVirtualGeometries
+
+BorderWidth		6
+
+BorderBevelWidth	2
+#ButtonBevelWidth	1
+IconBevelWidth		2
+#IconManagerBevelWidth	1
+InfoBevelWidth		2
+#MenuBevelWidth		2
+TitleBevelWidth		1
+
+ClearBevelContrast	40
+DarkBevelContrast	40
+
+MoveDelta		3
+
+ResizeRegion		"NorthEast"
+VirtualDesktop		"3x3-0-0" 16
+
+TitleFont		"-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+ResizeFont		"-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+MenuFont		"-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+MenuTitleFont		"-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+IconFont		"-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+InfoFont		"-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+IconManagerFont		"-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+
+#
+# Lists
+#
+
+WarpCursor
+
+NailedDown
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+NoTitle
+{
+	"VTWM Icon Manager"
+}
+
+DontShowInDisplay
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+IconManagerDontShow
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+Color
+{
+	BorderColor			"grey70"
+	BorderTileBackground		"gray60"
+	BorderTileForeground		"gray60"
+	DefaultBackground		"maroon"
+	DefaultForeground		"gray85"
+	TitleBackground			"maroon"
+	TitleForeground			"gray85"
+	MenuBackground			"maroon"
+	MenuForeground			"gray85"
+	MenuTitleBackground		"gray70"
+	MenuTitleForeground		"maroon"
+	IconBackground			"maroon"
+	IconForeground			"gray85"
+	IconBorderColor			"gray85"
+	IconManagerBackground		"maroon"
+	IconManagerForeground		"gray85"
+	VirtualBackground		"maroon"
+	VirtualForeground		"black"
+	DesktopDisplayBackground	"grey60"
+}
+
+#
+# Functions and Bindings
+#
+
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+LeftTitleButton ":xpm:bar" = f.menu "windowops"
+RightTitleButton ":xpm:dot" = f.iconify
+RightTitleButton ":xpm:resize" = f.resize
+
+Button1 = : root : f.menu "main"
+Button2 = : root : f.menu "windowops"
+Button3 = : root : f.version
+
+Button1 = : title : f.function "move-or-raise"
+Button3 = : title : f.lower
+
+Button1 = : frame : f.function "move-or-raise"
+Button2 = : frame : f.resize
+Button3 = : frame : f.iconify
+
+Button1 = : icon : f.function "move-or-iconify"
+Button3 = : icon : f.menu "windowops"
+
+Button1 = : iconmgr : f.iconify
+Button3 = : iconmgr : f.warp
+
+Button1 = : virtual | desktop : f.movescreen
+
+#
+# Menus
+#
+
+menu "main"
+{
+	"Main Menu"		f.title
+	"Debian"		f.menu "/Debian"
+	""				f.separator
+	"Show Icon Manager"	f.showiconmgr
+	"Hide Icon Manager"	f.hideiconmgr
+	""				f.separator
+	"Show Desktop"		f.showdesktopdisplay
+	"Hide Desktop"		f.hidedesktopdisplay
+	""				f.separator
+	"Exit"			f.menu "Quit-Verify"
+}
+
+menu "Quit-Verify"
+{
+	"Really quit VTWM?"	f.title
+	"No, restart VTWM"	f.restart
+	"Yes, really quit"	f.quit
+}
+
+menu "windowops"
+{
+	"Window Ops"	f.title
+	"Autoraise"		f.autoraise
+	"Raise"			f.raise
+	"Lower"			f.lower
+	"Nail"			f.nail
+	""				f.separator
+	"Move"			f.move
+	"Size"			f.resize
+	"Iconify"		f.iconify
+	""				f.separator
+	"Fullzoom"		f.fullzoom
+	"Horizoom"		f.horizoom
+	"Vertzoom"		f.zoom
+	""				f.separator
+	"Identify"		f.identify
+	""				f.separator
+	"Delete"		f.delete
+	"Destroy"		f.destroy
+}
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+menu "/Debian/Applications/Accessibility"
+{
+  "Xmag" f.exec "xmag &"
+}
+menu "/Debian/Applications/Data Management"
+{
+  "AddressManager" f.exec "/usr/bin/AddressManager &"
+}
+menu "/Debian/Applications/Editors"
+{
+  "LeafPad" f.exec "/usr/bin/leafpad &"
+  "MousePad" f.exec "/usr/bin/mousepad &"
+  "NEdit" f.exec "nedit &"
+  "TextEdit" f.exec "/usr/bin/TextEdit &"
+  "Xedit" f.exec "xedit &"
+  "xpad" f.exec "/usr/bin/xpad &"
+}
+menu "/Debian/Applications/Emulators"
+{
+  "Dos Emulator" f.exec "/usr/bin/xdosemu &"
+  "Qemu Launcher" f.exec "/usr/bin/qemu-launcher &"
+  "VirtualBox" f.exec "/usr/bin/virtualbox &"
+}
+menu "/Debian/Applications/File Management"
+{
+  "Baobab" f.exec "/usr/bin/baobab &"
+  "Brasero" f.exec "/usr/bin/brasero &"
+  "catfish" f.exec "catfish &"
+  "GWorkspace" f.exec "GWorkspace &"
+  "K3b" f.exec "/usr/bin/k3b &"
+  "MDFinder" f.exec "MDFinder &"
+  "Thunar" f.exec "/usr/bin/thunar &"
+  "Xarchiver" f.exec "/usr/bin/xarchiver &"
+  "Xfdesktop" f.exec "xfdesktop &"
+  "X file manager" f.exec "/usr/bin/xfm &"
+  "Zipper" f.exec "/usr/bin/Zipper &"
+}
+menu "/Debian/Applications/Graphics"
+{
+  "dotty" f.exec "/usr/bin/dotty &"
+  "Inkscape" f.exec "/usr/bin/inkscape &"
+  "lefty" f.exec "/usr/bin/lefty &"
+  "mtPaint" f.exec "/usr/bin/mtpaint &"
+  "PRICE" f.exec "/usr/bin/PRICE &"
+  "Schism Tracker Font Editor" f.exec "/usr/bin/schism --font-editor &"
+  "smplayer" f.exec "/usr/bin/smplayer &"
+  "The GIMP" f.exec "/usr/bin/gimp &"
+  "X Window Snapshot" f.exec "xwd | xwud &"
+}
+menu "/Debian/Applications/Network/Communication"
+{
+  "GNUMail" f.exec "GNUMail &"
+  "HexChat" f.exec "/usr/bin/hexchat &"
+  "Pidgin" f.exec "/usr/bin/pidgin &"
+  "QTerm" f.exec "/usr/bin/qterm &"
+  "SAMBA for KDE" f.exec "/usr/bin/smb4k &"
+  "Telnet" f.exec "x-terminal-emulator  -T \"Telnet\" -e sh -c \"/usr/bin/telnet.netkit\" &"
+  "Xbiff" f.exec "xbiff &"
+  "xtightvncviewer" f.exec "/usr/bin/xtightvncviewer &"
+}
+menu "/Debian/Applications/Network/File Transfer"
+{
+  "Transmission BitTorrent Client (GTK)" f.exec "/usr/bin/transmission-gtk &"
+  "Uget" f.exec "/usr/bin/uget-gtk &"
+}
+menu "/Debian/Applications/Network/Web Browsing"
+{
+  "ELinks WWW browser" f.exec "x-terminal-emulator  -T \"ELinks WWW browser\" -e sh -c \"/usr/bin/elinks\" &"
+  "Lynx" f.exec "x-terminal-emulator  -T \"Lynx\" -e sh -c \"lynx\" &"
+  "w3m" f.exec "x-terminal-emulator  -T \"w3m\" -e sh -c \"/usr/bin/w3m /usr/share/doc/w3m/MANUAL.html\" &"
+}
+menu "/Debian/Applications/Network/Web News"
+{
+  "Grr" f.exec "/usr/bin/Grr &"
+}
+menu "/Debian/Applications/Network"
+{
+  "Communication" f.menu "/Debian/Applications/Network/Communication"
+  "File Transfer" f.menu "/Debian/Applications/Network/File Transfer"
+  "Web Browsing" f.menu "/Debian/Applications/Network/Web Browsing"
+  "Web News" f.menu "/Debian/Applications/Network/Web News"
+}
+menu "/Debian/Applications/Office"
+{
+  "AbiWord Word Processor" f.exec "/usr/bin/abiword &"
+}
+menu "/Debian/Applications/Programming"
+{
+  "GDB" f.exec "x-terminal-emulator  -T \"GDB\" -e sh -c \"/usr/bin/gdb\" &"
+  "Gorm" f.exec "/usr/bin/Gorm &"
+  "ProjectCenter" f.exec "/usr/bin/ProjectCenter &"
+  "Tclsh8.6" f.exec "x-terminal-emulator  -T \"Tclsh8.6\" -e sh -c \"/usr/bin/tclsh8.6\" &"
+  "TkWish8.6" f.exec "x-terminal-emulator -e /usr/bin/wish8.6 &"
+}
+menu "/Debian/Applications/Science/Chemistry"
+{
+  "xdrawchem" f.exec "/usr/bin/xdrawchem &"
+}
+menu "/Debian/Applications/Science/Mathematics"
+{
+  "Bc" f.exec "x-terminal-emulator  -T \"Bc\" -e sh -c \"/usr/bin/bc\" &"
+  "Dc" f.exec "x-terminal-emulator  -T \"Dc\" -e sh -c \"/usr/bin/dc\" &"
+  "galculator" f.exec "/usr/bin/galculator &"
+  "Gnuplot" f.exec "x-terminal-emulator  -T \"Gnuplot\" -e sh -c \"/usr/bin/gnuplot5-qt\" &"
+  "Xcalc" f.exec "xcalc &"
+}
+menu "/Debian/Applications/Science"
+{
+  "Chemistry" f.menu "/Debian/Applications/Science/Chemistry"
+  "Mathematics" f.menu "/Debian/Applications/Science/Mathematics"
+}
+menu "/Debian/Applications/Shells"
+{
+  "Bash" f.exec "x-terminal-emulator  -T \"Bash\" -e sh -c \"/bin/bash --login\" &"
+  "Dash" f.exec "x-terminal-emulator  -T \"Dash\" -e sh -c \"/bin/dash -i\" &"
+  "Ksh" f.exec "x-terminal-emulator  -T \"Ksh\" -e sh -c \"/bin/ksh93\" &"
+  "Sh" f.exec "x-terminal-emulator  -T \"Sh\" -e sh -c \"/bin/sh --login\" &"
+}
+menu "/Debian/Applications/Sound"
+{
+  "Alsamixergui" f.exec "/usr/bin/alsamixergui &"
+  "Amarok" f.exec "/usr/bin/amarok &"
+  "CsoundQT" f.exec "/usr/bin/csoundqt &"
+  "Cynthiune" f.exec "/usr/bin/Cynthiune &"
+  "LMMS" f.exec "/usr/bin/lmms &"
+  "MilkyTracker" f.exec "/usr/bin/milkytracker &"
+  "Open Cubic Player (text)" f.exec "x-terminal-emulator  -T \"Open Cubic Player (text)\" -e sh -c \"/usr/bin/ocp\" &"
+  "pavucontrol" f.exec "/usr/bin/pavucontrol &"
+  "qsynth" f.exec "/usr/bin/qsynth &"
+  "Schism Tracker" f.exec "/usr/bin/schism &"
+  "STKDemo" f.exec "/usr/bin/STKDemo &"
+  "TiMidity++" f.exec "timidity -ia &"
+}
+menu "/Debian/Applications/System/Administration"
+{
+  "Debian Task selector" f.exec "x-terminal-emulator  -T \"Debian Task selector\" -e sh -c \"su-to-root -c tasksel\" &"
+  "Editres" f.exec "editres &"
+  "Gnome Control Center" f.exec "/usr/bin/gnome-control-center &"
+  "GNOME Network Tool" f.exec "/usr/bin/gnome-nettool &"
+  "GTK+ 2.0 theme manager" f.exec "/usr/bin/gtk-chtheme &"
+  "menulibre" f.exec "menulibre &"
+  "mugshot" f.exec "/usr/bin/mugshot &"
+  "Network Admin" f.exec "/usr/bin/network-admin &"
+  "Openbox Configuration Manager" f.exec "/usr/bin/obconf &"
+  "QtConfig" f.exec "/usr/bin/qtconfig-qt4 &"
+  "Services Admin" f.exec "/usr/bin/services-admin &"
+  "Shares Admin" f.exec "/usr/bin/shares-admin &"
+  "System Information" f.exec "/usr/bin/hardinfo &"
+  "System Preferences" f.exec "/usr/bin/SystemPreferences &"
+  "Time Admin" f.exec "/usr/bin/time-admin &"
+  "User accounts Admin" f.exec "/usr/bin/users-admin &"
+  "Xclipboard" f.exec "xclipboard &"
+  "Xfce Application Finder" f.exec "xfce4-appfinder &"
+  "Xfontsel" f.exec "xfontsel &"
+  "Xkill" f.exec "xkill &"
+  "Xrefresh" f.exec "xrefresh &"
+}
+menu "/Debian/Applications/System/Hardware"
+{
+  "screentest" f.exec "/usr/bin/screentest &"
+  "Xvidtune" f.exec "xvidtune &"
+}
+menu "/Debian/Applications/System/Language Environment"
+{
+  "Input Method Configuration" f.exec "x-terminal-emulator  -T \"Input Method Configuration\" -e sh -c \"/usr/bin/im-config\" &"
+}
+menu "/Debian/Applications/System/Monitoring"
+{
+  "GKrellM" f.exec "/usr/bin/gkrellm &"
+  "Pstree" f.exec "x-terminal-emulator  -T \"Pstree\" -e sh -c \"/usr/bin/pstree.x11\" &"
+  "Top" f.exec "x-terminal-emulator  -T \"Top\" -e sh -c \"/usr/bin/top\" &"
+  "Xconsole" f.exec "xconsole -file /dev/xconsole &"
+  "Xev" f.exec "x-terminal-emulator -e xev &"
+  "Xload" f.exec "xload &"
+  "XSysInfo" f.exec "/usr/bin/xsysinfo &"
+}
+menu "/Debian/Applications/System/Package Management"
+{
+  "Aptitude Package Manager (text)" f.exec "x-terminal-emulator  -T \"Aptitude Package Manager (text)\" -e sh -c \"/usr/bin/aptitude-curses\" &"
+  "Synaptic Package Manager" f.exec "x-terminal-emulator -e synaptic-pkexec &"
+}
+menu "/Debian/Applications/System/Security"
+{
+  "light-locker-settings" f.exec "light-locker-settings &"
+}
+menu "/Debian/Applications/System"
+{
+  "Administration" f.menu "/Debian/Applications/System/Administration"
+  "Hardware" f.menu "/Debian/Applications/System/Hardware"
+  "Language Environment" f.menu "/Debian/Applications/System/Language Environment"
+  "Monitoring" f.menu "/Debian/Applications/System/Monitoring"
+  "Package Management" f.menu "/Debian/Applications/System/Package Management"
+  "Security" f.menu "/Debian/Applications/System/Security"
+}
+menu "/Debian/Applications/Terminal Emulators"
+{
+  "LXTerminal" f.exec "/usr/bin/lxterminal &"
+  "XTerm" f.exec "xterm &"
+  "X-Terminal as root (GKsu)" f.exec "/usr/bin/gksu -u root /usr/bin/x-terminal-emulator &"
+  "XTerm (Unicode)" f.exec "uxterm &"
+}
+menu "/Debian/Applications/Text"
+{
+  "Charmap" f.exec "/usr/bin/Charmap &"
+}
+menu "/Debian/Applications/Video"
+{
+  "GNOME MPlayer" f.exec "gnome-mplayer &"
+  "guvcview" f.exec "/usr/bin/guvcview &"
+  "kodi" f.exec "/usr/bin/kodi &"
+  "xine Media Player" f.exec "/usr/bin/xine &"
+}
+menu "/Debian/Applications/Viewers"
+{
+  "qPDFview" f.exec "qpdfview &"
+  "ViewPDF" f.exec "/usr/bin/ViewPDF &"
+  "Wordview" f.exec "/usr/bin/wordview &"
+  "Xditview" f.exec "xditview &"
+  "XLess" f.exec "xless /usr/share/doc/xless/xless.help &"
+}
+menu "/Debian/Applications"
+{
+  "Accessibility" f.menu "/Debian/Applications/Accessibility"
+  "Data Management" f.menu "/Debian/Applications/Data Management"
+  "Editors" f.menu "/Debian/Applications/Editors"
+  "Emulators" f.menu "/Debian/Applications/Emulators"
+  "File Management" f.menu "/Debian/Applications/File Management"
+  "Graphics" f.menu "/Debian/Applications/Graphics"
+  "Network" f.menu "/Debian/Applications/Network"
+  "Office" f.menu "/Debian/Applications/Office"
+  "Programming" f.menu "/Debian/Applications/Programming"
+  "Science" f.menu "/Debian/Applications/Science"
+  "Shells" f.menu "/Debian/Applications/Shells"
+  "Sound" f.menu "/Debian/Applications/Sound"
+  "System" f.menu "/Debian/Applications/System"
+  "Terminal Emulators" f.menu "/Debian/Applications/Terminal Emulators"
+  "Text" f.menu "/Debian/Applications/Text"
+  "Video" f.menu "/Debian/Applications/Video"
+  "Viewers" f.menu "/Debian/Applications/Viewers"
+}
+menu "/Debian/Games/Action"
+{
+  "nsnake" f.exec "x-terminal-emulator  -T \"nsnake\" -e sh -c \"/usr/games/nsnake\" &"
+  "Pacman for Console" f.exec "x-terminal-emulator  -T \"Pacman for Console\" -e sh -c \"/usr/games/pacman4console\" &"
+}
+menu "/Debian/Games/Adventure"
+{
+  "XSystem35" f.exec "/usr/games/xsystem35 &"
+}
+menu "/Debian/Games/Blocks"
+{
+  "Bastet" f.exec "x-terminal-emulator  -T \"Bastet\" -e sh -c \"/usr/games/bastet\" &"
+}
+menu "/Debian/Games/Board"
+{
+  "Chess Net" f.exec "x-terminal-emulator  -T \"Chess Net\" -e sh -c \"/usr/games/xboard -ics -icshost chess.net\" &"
+  "Default" f.exec "x-terminal-emulator  -T \"Default\" -e sh -c \"/usr/games/xboard -ics\" &"
+  "Free I.C.S." f.exec "x-terminal-emulator  -T \"Free I.C.S.\" -e sh -c \"/usr/games/xboard -ics -icshost freechess.org\" &"
+  "Internet Chess Club" f.exec "x-terminal-emulator  -T \"Internet Chess Club\" -e sh -c \"/usr/games/xboard -ics -icshost chessclub.com\" &"
+  "XBoard" f.exec "/usr/games/xboard -xncp &"
+  "XBoard (passive chessboard)" f.exec "/usr/games/xboard -ncp &"
+}
+menu "/Debian/Games/Puzzles"
+{
+  "Hitori" f.exec "/usr/games/hitori &"
+}
+menu "/Debian/Games/Tools"
+{
+  "fceux" f.exec "/usr/games/fceux &"
+  "MAME" f.exec "/usr/games/mame &"
+}
+menu "/Debian/Games/Toys"
+{
+  "Oclock" f.exec "oclock &"
+  "Xclock (analog)" f.exec "xclock -analog &"
+  "Xclock (digital)" f.exec "xclock -digital -update 1 &"
+  "Xeyes" f.exec "xeyes &"
+  "Xlogo" f.exec "xlogo &"
+}
+menu "/Debian/Games"
+{
+  "Action" f.menu "/Debian/Games/Action"
+  "Adventure" f.menu "/Debian/Games/Adventure"
+  "Blocks" f.menu "/Debian/Games/Blocks"
+  "Board" f.menu "/Debian/Games/Board"
+  "Puzzles" f.menu "/Debian/Games/Puzzles"
+  "Tools" f.menu "/Debian/Games/Tools"
+  "Toys" f.menu "/Debian/Games/Toys"
+}
+menu "/Debian/Help"
+{
+  "Info" f.exec "x-terminal-emulator  -T \"Info\" -e sh -c \"info\" &"
+  "Xman" f.exec "xman &"
+}
+menu "/Debian/Screen/Locking"
+{
+  "Lock Screen (XScreenSaver)" f.exec "/usr/bin/xscreensaver-command -lock &"
+}
+menu "/Debian/Screen/Saving"
+{
+  "Activate ScreenSaver (Next)" f.exec "/usr/bin/xscreensaver-command -next &"
+  "Activate ScreenSaver (Previous)" f.exec "/usr/bin/xscreensaver-command -prev &"
+  "Activate ScreenSaver (Random)" f.exec "/usr/bin/xscreensaver-command -activate &"
+  "Demo Screen Hacks" f.exec "/usr/bin/xscreensaver-command -demo &"
+  "Disable XScreenSaver" f.exec "/usr/bin/xscreensaver-command -exit &"
+  "Enable XScreenSaver" f.exec "/usr/bin/xscreensaver &"
+  "Reinitialize XScreenSaver" f.exec "/usr/bin/xscreensaver-command -restart &"
+  "ScreenSaver Preferences" f.exec "/usr/bin/xscreensaver-command -prefs &"
+}
+menu "/Debian/Screen"
+{
+  "Locking" f.menu "/Debian/Screen/Locking"
+  "Saving" f.menu "/Debian/Screen/Saving"
+}
+menu "/Debian/Window Managers"
+{
+  "awesome" f.startwm "/usr/bin/awesome &"
+  "FVWM" f.startwm "/usr/bin/fvwm2 &"
+  "Openbox" f.startwm "/usr/bin/openbox &"
+  "Twm" f.startwm "twm &"
+  "VTWM" f.startwm "vtwm &"
+  "Wmii" f.startwm "/usr/bin/wmii &"
+  "XFwm" f.startwm "xfwm4 &"
+  "Xmonad" f.startwm "/usr/bin/xmonad &"
+}
+menu "/Debian"
+{
+  "Applications" f.menu "/Debian/Applications"
+  "Games" f.menu "/Debian/Games"
+  "Help" f.menu "/Debian/Help"
+  "Screen" f.menu "/Debian/Screen"
+  "Window Managers" f.menu "/Debian/Window Managers"
+}
+
+# vim:set ai noet sts=8 sw=8 tw=80:
