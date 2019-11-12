@@ -1,0 +1,3 @@
+[submodule "neozshrc"]
+	path = neozshrc
+	url = https://gitlab.com/Neo_Chen/neozshrc.git
