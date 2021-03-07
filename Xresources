@@ -95,7 +95,7 @@ urxvt*color13: rgb:ff/40/ff
 urxvt*color14: rgb:40/ff/ff
 urxvt*color15: rgb:ff/ff/ff
 urxvt*thickness: 16
-URxvt.print-pipe: cat > /RAMDISK/$(date +"AD_%Y_%m_%d_-%a-_%H_%M_%S_%s").urxvt.print
+URxvt.print-pipe: cat /ram/$(date +"%Y%m%dT%H%M%S%z").urxvt.print
 URxvt.visualBell: true
 urxvt*urgentOnBell: true
 urxvt*borderColor: #000
@@ -105,7 +105,7 @@ urxvt*antialias:  false
 urxvt*cursorColor: #ffffff
 
 ! Xosview
-xosview*font:	xos4\040Terminus
+xosview*font:	Terminus
 xosview*loadCpuSpeed: True
 xosview*interrupts: True
 xosview*irqrate: True
@@ -205,7 +205,7 @@ rofi.lines:                          25
 ! "Number of columns" Set from: Default
 rofi.columns:                        1
 ! "Font to use" Set from: Default
-rofi.font:                           Sarasa Term TC Light 12
+rofi.font:			     Terminus 18
 ! "Border width" Set from: Default
 rofi.bw:                             4
 ! "Location on screen" Set from: Default
@@ -249,7 +249,7 @@ rofi.levenshtein-sort:               false
 ! "Set case-sensitivity" Set from: Default
 rofi.case-sensitive:                 false
 ! "Cycle through the results list" Set from: Default
-rofi.cycle:                          false
+rofi.cycle:                          true
 ! "Enable sidebar-mode" Set from: Default
 rofi.sidebar-mode:                   false
 ! "Row height (in chars)" Set from: Default
