@@ -1,4 +1,5 @@
 *nntpServer: nntp.aioe.org
+*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 
 ! xterm
 xterm*termName: xterm-256color
@@ -67,7 +68,7 @@ urxvt*scrollBar_right: true
 urxvt*ScrollBar: true
 URxvt.cutchars: "`\"'&();<=>?[\\]^{|}$"
 urxvt*loginshell: true
-URxvt.perl-ext-common:  default,xim-onthespot
+URxvt.perl-ext-common:  default,tabbed
 URxvt.matcher.button: 3
 URxvt.tabbed.tabbar-fg: 15
 URxvt.tabbed.tabbar-bg: 235
@@ -103,6 +104,11 @@ urxvt.scrollColor: #c0c0c0
 urxvt*troughColor: #808080
 urxvt*antialias:  false
 urxvt*cursorColor: #ffffff
+! Restore Ctrl+Shift+(c|v)
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 ! Xosview
 xosview*font:	Terminus
