@@ -50,7 +50,9 @@ urxvt*locale: true
 urxvt*scrollBar: false
 urxvt*geometry: 132x50
 urxvt*font: x:-xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1,x:-gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
-urxvt*boldFont: x:-xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1,x:-gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
+urxvt*boldFont: x:-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1,x:-gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
+urxvt*italicFont: x:-xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1,x:-gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
+urxvt*boldItalicFont: x:-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1,x:-gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
 urxvt.preeditType: Root
 urxvt*saveLines: 0
 URxvt.secondaryScreen: 1
