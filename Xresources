@@ -68,7 +68,7 @@ urxvt.mouseWheelScrollPage: True
 !urxvt*scaleHeight: 1.02
 urxvt*scrollBar_right: true
 urxvt*ScrollBar: true
-URxvt.cutchars: "`\"'&();<=>?[\\]^{|}$"
+URxvt.cutchars: "`\"'&();<=>?[\\]^{|}$│"
 urxvt*loginshell: true
 URxvt.perl-ext-common:  default,tabbed,-confirm-paste
 URxvt.matcher.button: 3
